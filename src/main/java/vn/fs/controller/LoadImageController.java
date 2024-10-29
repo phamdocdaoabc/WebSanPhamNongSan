@@ -24,7 +24,7 @@ public class LoadImageController {
 
 	@GetMapping(value = "loadImage")
 	@ResponseBody
-	public byte[] index(@RequestParam(value = "imageName") String imageName, HttpServletResponse response)
+	public byte[] index(@RequestParam String imageName, HttpServletResponse response)
 			throws IOException {
 		response.setContentType("image/jpeg");
 		File file = new File(pathUploadImage + File.separatorChar + imageName);

@@ -37,7 +37,7 @@ public class FavoriteController extends CommomController {
 	}
 
 	@GetMapping(value = "/doFavorite")
-	public String doFavorite(Model model, Favorite favorite, User user, @RequestParam("id") Long id) {
+	public String doFavorite(Model model, Favorite favorite, User user, @RequestParam Long id) {
 		Product product = productRepository.findById(id).orElse(null);
 		favorite.setProduct(product);
 		favorite.setUser(user);
@@ -48,7 +48,7 @@ public class FavoriteController extends CommomController {
 	}
 
 	@GetMapping(value = "/doUnFavorite")
-	public String doUnFavorite(Model model, Product product, User user, @RequestParam("id") Long id) {
+	public String doUnFavorite(Model model, Product product, User user, @RequestParam Long id) {
 		Favorite favorite = favoriteRepository.selectSaves(id, user.getUserId());
 		product = productRepository.findById(id).orElse(null);
 		product.setFavorite(false);

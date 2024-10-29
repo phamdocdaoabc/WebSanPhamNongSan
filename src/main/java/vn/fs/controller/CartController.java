@@ -92,7 +92,7 @@ public class CartController extends CommomController {
 
 	// add cartItem
 	@GetMapping(value = "/addToCart")
-	public String add(@RequestParam("productId") Long productId, HttpServletRequest request, Model model) {
+	public String add(@RequestParam Long productId, HttpServletRequest request, Model model) {
 
 		Product product = productRepository.findById(productId).orElse(null);
 
@@ -114,7 +114,7 @@ public class CartController extends CommomController {
 
 	
 	@GetMapping(value = "/remove/{id}")
-	public String remove(@PathVariable("id") Long id, HttpServletRequest request, Model model) {
+	public String remove(@PathVariable Long id, HttpServletRequest request, Model model) {
 	    Collection<CartItem> cartItems = shoppingCartService.getCartItems();
 	    session = request.getSession();
 	    

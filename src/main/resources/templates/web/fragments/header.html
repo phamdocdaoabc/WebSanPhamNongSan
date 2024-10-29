@@ -20,45 +20,33 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 							<p>Chào mừng bạn đến với cửa hàng thực phẩm !</p>
 						</div>
 					</div>
-<!-- 					<div class="col-md-12 col-lg-3"> -->
-<!-- 						<div class="header-top-select"> -->
-<!-- 							<div class="header-select" style="text-align: right; padding-left: 150px"> -->
-<!-- 								<i class="icofont-world"></i><select class="select"> -->
-<!-- 									<option value="vietnam" selected>Việt Nam</option> -->
-<!-- 								</select> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
 					</div>
 				</div>
 			</div>
 		</div>
 		<header class="header-part" >
 			<div class="container">
-				<div class="header-content" style=" height: 110px">
+				<div class="header-content" style=" height: 150px">
 					<div class="header-media-group">
 						<button class="header-user">
-							<img src="/images/user.png" alt="user" />
+							<img src="/images/user_avatar.jpg" alt="user" />
 						</button>
 						
 						
-						<a th:href="@{/}"> <img src="/images/logo.png" alt="logo" />
+						<a th:href="@{/}"> <img src="/images/logo/logoWeb.png" alt="logo" />
 						</a>
-<!-- 						<button class="header-src"> -->
-<!-- 							<i class="fas fa-search"></i> -->
-<!-- 						</button> -->
 						<a class="header-widget-2 header-cart" title="Giỏ hàng">
 							<i class="fas fa-shopping-basket"></i> <sup th:text="${totalCartItems}" id="totalCartItems">0</sup>
 						</a>
 					</div>
 					
-					<a th:href="@{/}" class="header-logo" style="height: 100px;width: auto;">
-					<img src="/images/logo.png" alt="logo" class="logo" style="height: 100px;width: auto;" />
+					<a th:href="@{/}" class="header-logo" style="height: 150px;width: auto;">
+					<img src="/images/logo/logoWeb.png" alt="logo" class="logo" style="height: 150px;width: auto;" />
 					</a>
 				
 					<th:block th:if="${#request.remoteUser}">
-						<a href="javascript:void(0);" class="header-widget" title="Tên của bạn">
-							<img src="/images/user.png" alt="user" />
+						<a href="/profile" class="header-widget" title="Tên của bạn">
+							<img src="/images/user_avatar.jpg" alt="user" />
 							<span>Xin Chào!<strong><em>  [[${user.name}]]</em></strong></span>
 						</a>
 					</th:block>
@@ -137,7 +125,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 								<div class="navbar-info">
 									<i class="icofont-ui-touch-phone"></i>
 									<p>
-										<small>Số điện thoại</small><span>(+84) 354 925 331</span>
+										<small>Số điện thoại</small><span>(+83) 953 7617</span>
 									</p>
 								</div>
 								<div class="navbar-info">

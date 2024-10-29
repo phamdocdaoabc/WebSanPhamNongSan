@@ -19,8 +19,8 @@
       name="keywords"
       content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, products, farm, grocery, natural, online"
     />
-    <title>Web bán hàng nông sản</title>
-    <link rel="icon" href="images/favicon.png" />
+   <title>Thế giới nông sản</title>
+<link rel="icon" href="/images/logo.png" />
     <link rel="stylesheet" href="fonts/flaticon/flaticon.css" />
     <link rel="stylesheet" href="fonts/icofont/icofont.min.css" />
     <link rel="stylesheet" href="fonts/fontawesome/fontawesome.min.css" />
@@ -40,7 +40,22 @@
 		<!--************************************
 				Header End
 		*************************************-->
+<style>
+.decrease-quantity {
+    border-radius: 0.25rem 0 0 0.25rem;
+}
 
+.quantity-input {
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    width: 10px; 
+}
+
+.increase-quantity {
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+</style>
     <section
       class="inner-section single-banner"
       style="background: url(images/single-banner.jpg) no-repeat center">
@@ -74,12 +89,14 @@
                   <table class="table-list" th:if="${totalCartItems!=0}">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">STT</th>
                         <th scope="col">Sản phẩm</th>
                         <th scope="col">Tên sản phẩm</th>
-                        <th scope="col">Đơn giá</th>
+<!--                         <th scope="col">Đơn giá</th> -->
                         <th scope="col">Thể loại</th>
                         <th scope="col">Số lượng</th>
+                         <th scope="col">Đơn giá</th>
+						<th scope="col">Tổng tiền</th>
                         <th scope="col">action</th>
                       </tr>
                     </thead>
@@ -91,11 +108,25 @@
                           <img  th:src="@{'/loadImage?imageName='+${item.product.productImage}}" alt="product" />
                         </td>
                         <td class="table-name"><h6>[[${item.product.productName}]]</h6></td>
-                        <td class="table-price">
-                          <h6>[[${#numbers.formatDecimal(item.product.price - (item.product.price * item.product.discount/100), 1, 'DEFAULT', 0, 'DEFAULT')} +' đ']]<small>/kg</small></h6>
-                        </td>
+<!--                         <td class="table-price"> -->
+<!--                           <h6>[[${#numbers.formatDecimal(item.product.price - (item.product.price * item.product.discount/100), 1, 'DEFAULT', 0, 'DEFAULT')} +' đ']]<small>/kg</small></h6> -->
+<!--                         </td> -->
                         <td class="table-brand"><h6>[[${item.product.category.categoryName}]]</h6></td>
-                        <td class="table-quantity"><h6>[[${item.quantity}]]</h6></td>
+                        
+						<td class="table-quantity">                        
+						    <div class="input-group">
+						        <button class="decrease-quantity" type="button" th:onclick="'decreaseQuantity(\'' + ${item.product.productId} + '\')'">-</button>
+						        <input type="text" class="quantity-input" th:value="${item.quantity}" th:data-product="${item.product.productId}" readonly>
+						        <button class="increase-quantity" type="button" th:onclick="'increaseQuantity(\'' + ${item.product.productId} + '\')'">+</button>
+						    </div>
+						</td>
+
+                        <td class="table-price">
+							    <h6 th:data-price="${item.product.productId}" th:price="${item.product.price - (item.product.price * item.product.discount/100)}">[[${#numbers.formatDecimal(item.product.price - (item.product.price * item.product.discount/100), 1, 'DEFAULT', 0, 'DEFAULT')} +' đ']]/kg</h6>
+							</td>
+							<td class="table-total" th:data-total="${item.product.productId}">
+							    <h6>[[${#numbers.formatDecimal(item.quantity * (item.product.price - (item.product.price * item.product.discount/100)), 1, 'DEFAULT', 0, 'DEFAULT')} +' đ']]</h6>
+							</td>
                         <td class="table-action">
                           <a
                             class="view"
@@ -117,27 +148,112 @@
                 <div class="chekout-coupon">
                   <h4>Tổng tiền thanh toán</h4>
                 </div>
-                <div class="checkout-charge">
-                  <ul>
-                    <li>
-                      <span>Tổng tiền thanh toán<small>(Incl. VAT)</small></span>
-                      <span>[[${#numbers.formatDecimal(totalPrice, 1, 'DEFAULT', 0, 'DEFAULT')}+ ' đ']]</span>
-                    </li>
-                  </ul>
-                </div>
+<!--                 <div class="checkout-charge"> -->
+<!--                   <ul> -->
+<!--                     <li> -->
+<!--                       <span>Tổng tiền thanh toán<small>(Incl. VAT)</small></span> -->
+<!--                       <span>[[${#numbers.formatDecimal(totalPrice, 1, 'DEFAULT', 0, 'DEFAULT')}+ ' đ']]</span> -->
+<!--                     </li> -->
+<!--                   </ul> -->
+<!--                 </div> -->
+						<div class="checkout-charge">
+						    <ul>
+						        <li>
+						            <span>Tổng tiền thanh toán<small>(Incl. VAT)</small></span>
+						            <span id="totalPrice" >[[${#numbers.formatDecimal(totalPrice, 1, 'DEFAULT', 0, 'DEFAULT')}+ ' đ']]</span>
+						        </li>
+						    </ul>
+						</div>
                 </th:block>
               </div>
             </div>
           </div>
+  
+  
+          
+    <script th:inline="javascript">
+    
+    function updateQuantity(productId, quantity) {
+        fetch('/updateQuantity?productId=' + productId + '&quantity=' + quantity, { method: 'PUT' })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Quantity updated successfully.');
+                } else {
+                    console.error('Failed to update quantity');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function increaseQuantity(productId) {
+        var quantityInput = document.querySelector('[data-product="' + productId + '"]');
+        var currentQuantity = parseInt(quantityInput.value);
+        quantityInput.value = currentQuantity + 1;
+        updateQuantity(productId, currentQuantity + 1);
+        updatePrice(productId);
+
+    }
+
+    function decreaseQuantity(productId) {
+        var quantityInput = document.querySelector('[data-product="' + productId + '"]');
+        var currentQuantity = parseInt(quantityInput.value);
+        if (currentQuantity > 1) {
+            quantityInput.value = currentQuantity - 1;
+            updateQuantity(productId, currentQuantity - 1);
+        }
+        updatePrice(productId);
+
+    }
+    
+
+    function updatePrice(productId) {
+        var quantityInput = document.querySelector('[data-product="' + productId + '"]');
+		console.log(quantityInput);
+
+        var quantity = parseInt(quantityInput.value);
+		console.log(quantity);
+
+        var pricePerUnit =document.querySelector('[data-price="' + productId + '"]');
+		console.log(pricePerUnit);
+        var priceFinal = parseFloat(pricePerUnit.getAttribute('price'));
+		console.log(priceFinal);
+        var totalPriceElement = document.querySelector('[data-total="' + productId + '"]');
+
+        var totalPrice = quantity * priceFinal;
+        totalPriceElement.innerText = formatCurrency(totalPrice);
+        updateTotalPriceAllProducts();
+
+    }
+
+    function formatCurrency(amount) {
+        return amount.toFixed(0).replace(/\d(?=(\d{3})+$)/g, '$&,') + ' đ';
+    }
+    
+    function updateTotalPriceAllProducts() {
+        var totalPrices = document.querySelectorAll('[data-total]');
+        totalPriceAllProducts = 0;
+        totalPrices.forEach(function(totalPriceElement) {
+            //var price = parseFloat(totalPriceElement.innerText.replace(' đ', '').replace(',', ''));
+            var priceString = totalPriceElement.innerText.replace(' đ', '').replace(',', '');
+			var price = parseInt(priceString.replace(/\D/g, ''));
+            totalPriceAllProducts += price;
+
+        });
+        document.getElementById('totalPrice').innerText = formatCurrency(totalPriceAllProducts);
+    }
+
+</script>
+          
 
           <div class="col-lg-12" th:if="${totalCartItems!=0}">
             <div class="account-card mb-0">
-              <div class="account-title">
-                <h4>Thông tin nhận hàng</h4>
-              </div>
+              
               <div class="account-content">
-                <div class="row">
-                    <form class="user-form" th:action="@{/checkout}" th:object="${order}" method="post">
+                    <form class="user-form row" th:action="@{/checkout}" th:object="${order}" method="post">
+                       <div class="col-lg-8">
+	                       <div class="account-title">
+			                	<h4>Thông tin nhận hàng</h4>
+			              </div>
                         <div class="form-group">
                             <input
                                 type="email"
@@ -182,27 +298,35 @@
                             <input
                                 type="text"
                                 class="form-control"
-                                placeholder="Nội dung đơn hàng"
+                                placeholder="Ghi chú đơn hàng"
                                 
                             />
                         </div>
+                       </div>
 
-                        <div class="form-group">
-                            <div class="account-title">
-                                <h4>Chọn phương thức thanh toán</h4>
-                              </div>
-                            <div class="radio">
-                                <label style="color: #119744"><input type="radio" value="cod" name="checkOut" checked> <strong><em>Ship COD ( Thanh toán khi nhận hàng )</em></strong></label>
-                            </div>
-                            <div class="radio">
-                                <label style="color: #119744"><input type="radio" value="paypal" name="checkOut"> <strong><em>Thanh Toán Với Paypal</em></strong></label>
-                            </div>
-                        </div>
-                        <div class="checkout-proced">
-                            <button type="submit" class="btn btn-inline">Đặt hàng</button>
-                        </div>
+                       <div class="col-lg-4">
+                       <div >
+	                        <div class="form-group">
+	                            <div class="account-title">
+	                                <h4>Chọn phương thức thanh toán</h4>
+	                              </div>
+	                            <div class="radio">
+	                                <label style="color: #119744"><input type="radio" value="cod" name="checkOut" checked> <strong><em>Ship COD ( Thanh toán khi nhận hàng )</em></strong></label>
+	                            </div>
+			                         <a href="javascript:void(0);">
+											<img src="/images/payment/jpg/01.jpg" alt="payment" />
+									</a>
+	                            <div class="radio">
+	                                <label style="color: #119744"><input type="radio" value="paypal" name="checkOut"> <strong><em>Thanh Toán Với Paypal</em></strong></label>
+	                            </div>
+
+	                        </div>
+	                        <div class="checkout-proced">
+	                            <button type="submit" class="btn btn-inline">Đặt hàng</button>
+	                        </div>
+                     </div>
+                       </div>
                     </form>
-                </div>
               </div>
               
             </div>
@@ -334,5 +458,7 @@
     <script src="js/venobox.js"></script>
     <script src="js/slick.js"></script>
     <script src="js/main.js"></script>
+    
+    
   </body>
 </html>

@@ -3,7 +3,7 @@
     text-align: center;
     padding: 6px 0px;
     background: -webkit-gradient(linear, right top, left top, from(#52c234), to(#0cb94e));
-    background: linear-gradient(to left, #52c234, #0cb94e)
+    background: linear-gradient(to left, rgb(242, 231, 4), #0cb94e)
 }
 
 .header-top p {

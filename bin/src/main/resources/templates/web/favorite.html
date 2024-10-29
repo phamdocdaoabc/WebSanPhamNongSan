@@ -19,8 +19,8 @@
       name="keywords"
       content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, products, farm, grocery, natural, online"
     />
-    <title>Web bán hàng nông sản</title>
-    <link rel="icon" href="images/favicon.png" />
+  <title>Thế giới nông sản</title>
+<link rel="icon" href="/images/logo.png" />
     <link rel="stylesheet" href="fonts/flaticon/flaticon.css" />
     <link rel="stylesheet" href="fonts/icofont/icofont.min.css" />
     <link rel="stylesheet" href="fonts/fontawesome/fontawesome.min.css" />
@@ -64,7 +64,7 @@
               <table class="table-list" th:if="${totalSave!=0}">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">STT</th>
                     <th scope="col">Sản phẩm</th>
                     <th scope="col">Tên</th>
                     <th scope="col">Đơn giá</th>
@@ -87,10 +87,17 @@
                       <h6 class="stock-out" style="color: #119744">[[${item.product.quantity>0}?'Sản phẩm đang còn' : 'Đã hết hàng']]</h6>
                     </td>
                     <td class="table-shop">
-                      <a class="product-add1" title="Thêm giỏ hàng" th:href="@{/addToCart(productId=${item.product.productId})}">
-                        Thêm giỏ hàng
-                      </a>
-                      
+                      <th:block th:if="${item.product.quantity !=  0}">
+						   <a class="product-add1" title="Thêm giỏ hàng" th:href="@{/addToCart(productId=${item.product.productId})}">
+				           Thêm giỏ hàng
+				          </a>       	                               
+					 </th:block>
+					  <th:block th:if="${item.product.quantity ==  0}">
+							<a class="product-add2" >
+				             Hết hàng
+				            </a>       	                               
+					 </th:block>
+									 							 
                     </td>
                     <td class="table-action">
                       <a

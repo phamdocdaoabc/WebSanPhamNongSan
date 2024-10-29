@@ -19,8 +19,8 @@
       name="keywords"
       content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, products, farm, grocery, natural, online"
     />
-    <title>Web bán hàng nông sản</title>
-    <link rel="icon" href="images/favicon.png" />
+    <title>Thế giới nông sản</title>
+<link rel="icon" href="/images/logo.png" />
     <link rel="stylesheet" href="fonts/flaticon/flaticon.css" />
     <link rel="stylesheet" href="fonts/icofont/icofont.min.css" />
     <link rel="stylesheet" href="fonts/fontawesome/fontawesome.min.css" />
@@ -35,7 +35,7 @@
     <section class="user-form-part">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-12 col-sm-10 col-md-12 col-lg-12 col-xl-10">
+          <div class="col-12 col-sm-10 col-md-12 col-lg-8 col-xl-8">
             <div class="user-form-logo">
               <a th:href="@{/}"><img src="images/logo.png" alt="logo" /></a>
             </div>
@@ -51,25 +51,15 @@
 				
               </div>
               <div class="user-form-group">
-                <ul class="user-form-social">
-                  <li>
-                    <a href="javascript:void(0);" class="facebook">
-                    	<i class="fab fa-facebook-f"></i>login with facebook
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="javascript:void(0);" class="google">
-                    	<i class="fab fa-google"></i>login with google
-                    </a>
-                  </li>
-
-                </ul>
-                <div class="user-form-divider"><p>hoặc</p></div>
                 
                 <form th:action="@{/doLogin}" method="post" class="user-form">
                 
                		 <!-- error message -->
+					
+					<div class="alert alert-danger" role="alert" th:if="${param.accountLocked}">
+					   <span> Tài khoản của bạn đã bị khóa. Vui lòng liên hệ với quản trị viên để biết thêm chi tiết.</span>
+					</div>
+					
 					<div th:if="${param.error}">
 						<div class="alert alert-danger"><span>Tài khoản hoặc mật khẩu không chính xác!</span></div>
 					</div>
@@ -81,7 +71,10 @@
                       class="form-control"
                       placeholder="Địa chỉ Email"
                       autocomplete="off"
+                      required
                     />
+                        <div id="email-error" class="alert alert-danger" style="display:none;">Email không được để trống</div>
+                    
                   </div>
                   <div class="form-group">
                     <input
@@ -91,17 +84,27 @@
                       id="myPass"
                       placeholder="Mật khẩu"
                     />
+                        <div id="password-error" class="alert alert-danger" style="display:none;">Mật khẩu không được để trống</div>
                   </div>
-                  <div class="form-check mb-3">
+                  <div class="form-check mb-3 flex_login">
+                    <div>
                     <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="check"
-                      onclick="hidePass()"
-                    />
-                    <label class="form-check-label" for="check" >Hiển thị mật khẩu</label>
+	                      class="form-check-input"
+	                      type="checkbox"
+	                      value=""
+	                      id="check"
+	                      onclick="hidePass()"
+	                    />
+	                    <label class="form-check-label" for="check" >Hiển thị mật khẩu</label>
+                    </div>
+                    
+	                  <div class="form-group form-check">
+				        <input type="checkbox" class="form-check-input" id="remember" name="remember">
+				        <label class="form-check-label" for="remember">Nhớ tôi</label>
+				    </div>
                   </div>
+                 
+                  
                   <div class="form-button">
                     <button type="submit">Đăng nhập</button>
                     <p>
@@ -119,7 +122,7 @@
               </p>
             </div>
             <div class="user-form-footer">
-              <p>Greeny | &COPY; Developer by <a href="javascript:void(0);">DongTHD</a></p>
+              <p> Developer by  <a href="javascript:void(0);">Hải Đức</a></p>
             </div>
           </div>
         </div>
@@ -135,7 +138,11 @@
 				x.type = "password";
 			}
 		}
+		
+		
 	</script>
+	
+	
     
     <script src="vendor/bootstrap/jquery-1.12.4.min.js"></script>
     <script src="vendor/bootstrap/popper.min.js"></script>

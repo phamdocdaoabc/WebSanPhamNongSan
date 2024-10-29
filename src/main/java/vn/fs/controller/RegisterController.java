@@ -46,7 +46,7 @@ public class RegisterController {
 
 	@PostMapping("/register")
 	public String register(ModelMap model, @Validated @ModelAttribute("user") User dto, BindingResult result,
-			@RequestParam("password") String password) {
+			@RequestParam String password) {
 		if (result.hasErrors()) {
 			return "web/register";
 		}
@@ -69,7 +69,7 @@ public class RegisterController {
 
 	@PostMapping("/confirmOtpRegister")
 	public ModelAndView confirmRegister(ModelMap model, @ModelAttribute("user") User dto,
-			@RequestParam("password") String password, @RequestParam("otp") String otp) {
+			@RequestParam String password, @RequestParam String otp) {
 		if (otp.equals(String.valueOf(session.getAttribute("otp")))) {
 			dto.setPassword(bCryptPasswordEncoder.encode(password));
 			dto.setRegisterDate(new Date());

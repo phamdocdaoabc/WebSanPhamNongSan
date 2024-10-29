@@ -8,13 +8,14 @@
 }
 
 .user-form-logo img {
-    width: 200px
+    width: 250px
 }
 
 .user-form-card {
     padding: 30px;
     border-radius: 8px;
     margin-bottom: 20px;
+    margin-top: -40px;
     background: var(--white);
     border: 1px solid var(--border);
     
@@ -22,18 +23,32 @@
 
 .user-form-title {
     text-align: center;
-    margin-bottom: 30px
+    margin-bottom: -12px;
 }
 
 .user-form-title h2 {
     font-size: 28px;
     line-height: 36px;
-    margin-bottom: 5px;
+    margin: 5px 0px;
     color: var(--primary)
 }
 
 .user-form-title p {
     text-transform: capitalize
+}
+
+.user-form-avatar {
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+	border: 2px solid var(--primary);
+	border-radius: 50px;
+	overflow: hidden;
+}
+
+.user-form-avatar img {
+	width: 100%;
+	height: auto;
 }
 
 .user-form-group {
@@ -46,6 +61,16 @@
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     justify-content: center;
+}
+
+.user-form-group input {
+	box-shadow: 0px 5px 10px #45ad6417;
+	background: white;
+}
+
+.user-form .form-button button:hover {
+	box-shadow: 0px 0px 10px #45ad6496;
+	transition: 0.2s ease-out;
 }
 
 .user-form-social {

@@ -19,8 +19,8 @@
       name="keywords"
       content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, products, farm, grocery, natural, online"
     />
-    <title>Web bán hàng nông sản</title>
-    <link rel="icon" href="images/favicon.png" />
+    <title>Thế giới nông sản</title>
+<link rel="icon" href="/images/logo.png" />
     <link rel="stylesheet" href="fonts/flaticon/flaticon.css" />
     <link rel="stylesheet" href="fonts/icofont/icofont.min.css" />
     <link rel="stylesheet" href="fonts/fontawesome/fontawesome.min.css" />
@@ -64,11 +64,11 @@
               <ul class="details-preview">
                 <li><img th:src="@{'/loadImage?imageName='+${product.productImage}}" alt="product"/></li>
               </ul>
-              <ul class="details-thumb">
-                <li>
-                	<img th:src="@{'/loadImage?imageName='+${product.productImage}}" alt="product" />
-                </li>
-              </ul>
+<!--               <ul class="details-thumb"> -->
+<!--                 <li> -->
+<!--                 	<img th:src="@{'/loadImage?imageName='+${product.productImage}}" alt="product" /> -->
+<!--                 </li> -->
+<!--               </ul> -->
             </div>
           </div>
           <div class="col-lg-6">
@@ -80,6 +80,9 @@
               <div class="details-meta">
                 <p>Mã sản phẩm:<span>[[${product.productId}]]</span></p>
                 <p>Thể loại:<a href="#">[[${product.category.categoryName}]]</a></p>
+              </div>
+               <div class="details-meta">
+                <p>Số lượng hàng:<a href="#">[[${product.quantity}]]</a></p>
               </div>
               <div class="details-rating">
                 <i class="active icofont-star"></i
@@ -100,7 +103,7 @@
                 <label class="details-list-title">Xem thêm:</label>
                 <ul class="details-tag-list">
                   <li th:each="item : ${categoryList}">
-                  	<a th:href="@{/productByCategory(categoryId=${item.categoryId})}">[[${item.categoryName}]]</a>
+                  	<a th:href="@{/productByCategory(id=${item.categoryId})}">[[${item.categoryName}]]</a>
                   </li>
                 </ul>
               </div>
@@ -121,18 +124,41 @@
                   </li>
                 </ul>
               </div>
-              <div class="details-add-group">
-                <a class="product-add1" style="background-color: #119744" title="Thêm giỏ hàng" th:href="@{/addToCart(productId=${product.productId})}">
-                  <i style="color: white" class="fas fa-shopping-basket"></i>
-                  <span style="color: white">Thêm giỏ hàng</span>
-                </a>
-                
-              </div>
-              <div class="details-action-group">
-                <a class="details-wish" href="javascript:void(0);" title="Yêu thích">
-                <i class="icofont-heart"></i>
-                <span>Thêm yêu thích</span></a>
-              </div>
+
+				 
+				 <th:block th:if="${product.quantity != 0}">
+				  <div class="details-add-group">
+	                <a class="product-add1" style="background-color: #119744" title="Thêm giỏ hàng" th:if="${product.quantity > 0}" th:href="@{/addToCart(productId=${product.productId})}">
+	                  <i style="color: white" class="fas fa-shopping-basket"></i>
+	                  <span style="color: white">Thêm giỏ hàng</span>
+	                </a>              
+	              </div>          	                               
+				 </th:block>
+				 
+				 <th:block th:if="${product.quantity == 0}">
+				   <div class="details-add-group">
+	                <a class="product-add1" style="background-color: #cacaca">
+	                  <span style="color: white">Hết hàng</span>
+	                </a>              
+	              </div>   	       	                               
+				 </th:block>
+				 
+<!--               <div class="details-action-group"> -->
+<!--                 <a class="details-wish" href="javascript:void(0);" title="Yêu thích"> -->
+<!--                 <i class="icofont-heart"></i> -->
+<!--                 <span>Thêm yêu thích</span></a> -->
+<!--               </div> -->
+              
+               <th:block th:if="${user.email != null}">
+	                <div class="details-action-group">
+	               <a "details-wish" th:if="${product.favorite} == false"
+	                        title="Yêu thích"
+	                        th:href="@{/doFavorite(id=${product.productId})}" >               
+	                         <i class="icofont-heart"></i>
+	                        <span>Thêm yêu thích</span>
+	                 </a>
+	              </div>                                       
+                 </th:block>
               
             </div>
           </div>
@@ -221,13 +247,13 @@
 					                        </a>
 				                        </th:block>
 				                        
-										<a
-											title="Video về sản phẩm"
-											href="https://youtu.be/9xzcVxSBbG8"
-											class="venobox fas fa-play"
-											data-autoplay="true"
-											data-vbtype="video">
-										</a>
+<!-- 										<a -->
+<!-- 											title="Video về sản phẩm" -->
+<!-- 											href="https://youtu.be/9xzcVxSBbG8" -->
+<!-- 											class="venobox fas fa-play" -->
+<!-- 											data-autoplay="true" -->
+<!-- 											data-vbtype="video"> -->
+<!-- 										</a> -->
 										<a
 											title="Chi tiết sản phẩm"
 											th:href="@{/productDetail(id=${item.productId})}"
@@ -250,9 +276,17 @@
 										<del>[[${#numbers.formatDecimal(item.price, 1, 'DEFAULT', 0, 'DEFAULT')}+' đ']]</del>
 										<span>[[${#numbers.formatDecimal(item.price - (item.price * item.discount/100), 1, 'DEFAULT', 0, 'DEFAULT')}+' đ']]<small> /kg</small></span>
 									</h6>
-									<a class="product-add1" title="Thêm giỏ hàng" th:href="@{/addToCart(productId=${product.productId})}">
+									<th:block th:if="${item.quantity !=  0}">
+									  <a class="product-add1" title="Thêm giỏ hàng" th:href="@{/addToCart(productId=${item.productId})}">
 										<i class="fas fa-shopping-basket"></i><span>Thêm giỏ hàng</span>
-									</a>
+									</a>	       	                               
+									 </th:block>
+									 
+									  <th:block th:if="${item.quantity ==  0}">
+									  <a class="product-add2">
+										<i class="fas fa-shopping-basket"></i><span>Hết hàng</span>
+									</a>	       	                               
+									 </th:block>
 									
 								</div>
 							</div>

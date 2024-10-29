@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta charset="UTF-8" />
-	<title>Greeny - Trang quản trị</title>
+	<title>Greenty - Trang quản trị</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="/assets/img/icon.ico" type="image/x-icon"/>
 	
@@ -24,6 +24,24 @@
 	<link rel="stylesheet" href="/assets/css/atlantis.min.css">
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="/assets/css/demo.css">
+    <link rel="stylesheet" href="css/main.css" />
+    
+    <style type="text/css">
+    .product-add1 {
+		  font-size: 15px;
+		  padding: 8px 10px;
+		  border-radius: 6px;
+		  text-align: center;
+		  background-color: #1572e8;
+    }
+    
+     .product-add1 a {
+     	  padding: 5px 15px;
+		  text-align: center;
+		  color: white;
+		  text-decoration: none;
+    }
+    </style>
 </head>
 <body>
 	<div class="wrapper">
@@ -67,11 +85,15 @@
 					<div class="col-md-12">
 						<div class="card">
 							<div class="card-header">
-								<div class="d-flex align-items-center">
+								<div class="d-flex align-items-center" style="justify-content: space-between;">
 									<h4 class="card-title" style="text-decoration: underline;">Quản lý đơn hàng</h4>
-									<a th:href="@{/admin/export}" style="padding-left: 20px;">
-										<h4 class="card-title" style="text-decoration: underline; color: green;">Xuất file Excel</h4>
+									
+									 <div class="product-add1">
+									  <a  th:href="@{/admin/export}" style="padding-left: 20px;">
+										<i class="fas fa-save" style="padding-right: 8px"></i></i><span>Tạo báo cáo</span>
 									</a>
+									 </div>	       	                               
+									
 								</div>
 							</div>
 							<div class="alert alert-success row col-12"
@@ -282,7 +304,7 @@
 					</ul>
 				</nav>
 				<div class="copyright ml-auto">
-					2021, made with <i class="fa fa-heart heart text-danger"></i> by <a href="javascript:void(0);">GREENY-SHOP</a>
+					2024, made with <i class="fa fa-heart heart text-danger"></i> by <a href="javascript:void(0);">GREENY-SHOP</a>
 				</div>				
 			</div>
 		</footer>

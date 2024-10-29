@@ -47,7 +47,7 @@ public class ProfileController extends CommomController{
 
 	@GetMapping(value = "/profile")
 	public String profile(Model model, Principal principal, User user, Pageable pageable,
-			@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
+			@RequestParam Optional<Integer> page, @RequestParam Optional<Integer> size) {
 
 		if (principal != null) {
 
