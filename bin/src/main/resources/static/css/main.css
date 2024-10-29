@@ -30,7 +30,7 @@
   --body: #f5f6f7;
   --border: #e8e8e8;
   --heading: #39404a;
-  --primary: #119744;
+  --primary: #f57439;
   --sub-heading: #565765;
   --green-chalk: #ddffd5;
   --green-dark: #072f17;
@@ -172,7 +172,7 @@ button:focus {
   }
 }
 .section {
-  margin-bottom: 115px;
+  margin-bottom: 60px;
 }
 .inner-section {
   margin-bottom: 100px;
@@ -1069,6 +1069,37 @@ button:focus {
   -ms-transition: all linear 0.3s;
   -o-transition: all linear 0.3s;
 }
+
+.product-add2 {
+  width: 100%;
+  font-size: 15px;
+  padding: 6px 0px;
+  border-radius: 6px;
+  text-align: center;
+  text-transform: capitalize;
+  color: var(--heading);
+  background: var(--border);
+  text-shadow: var(-primary-tshadow);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  transition: all linear 0.3s;
+  -webkit-transition: all linear 0.3s;
+  -moz-transition: all linear 0.3s;
+  -ms-transition: all linear 0.3s;
+  -o-transition: all linear 0.3s;
+}
+.product-add2:hover {
+	background-color: #8e8e8e;
+	color: white;
+}
+
 .product-add i {
   font-size: 14px;
   margin-right: 5px;
@@ -5365,7 +5396,7 @@ tbody tr td:last-child {
 }
 .footer-links {
   display: -ms-grid;
-  display: grid;
+/*   display: grid; */
   grid-gap: 50px;
   -ms-grid-columns: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
@@ -6119,4 +6150,13 @@ tbody tr td:last-child {
   .bottom-paginate {
     margin-bottom: 30px;
   }
+}
+
+.flex_login{
+	display: flex;
+	justify-content: space-between;
+}
+
+.map-2{
+	width: 20%;
 }

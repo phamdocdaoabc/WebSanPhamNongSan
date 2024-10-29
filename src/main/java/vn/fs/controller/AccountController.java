@@ -44,7 +44,7 @@ public class AccountController {
 	}
 
 	@PostMapping("/forgotPassword")
-	public ModelAndView forgotPassowrd(ModelMap model, @RequestParam("email") String email) {
+	public ModelAndView forgotPassowrd(ModelMap model, @RequestParam String email) {
 		List<User> listUser = userRepository.findAll();
 		for (User user : listUser) {
 			if (email.trim().equals(user.getEmail())) {
@@ -65,7 +65,7 @@ public class AccountController {
 	}
 	
 	@PostMapping("/confirmOtpForgotPassword")
-	public ModelAndView confirm(ModelMap model, @RequestParam("otp") String otp, @RequestParam("email") String email) {
+	public ModelAndView confirm(ModelMap model, @RequestParam String otp, @RequestParam String email) {
 		if (otp.equals(String.valueOf(session.getAttribute("otp")))) {
 			model.addAttribute("email", email);
 			model.addAttribute("newPassword", "");
@@ -79,8 +79,8 @@ public class AccountController {
 
 	@PostMapping("/changePassword")
 	public ModelAndView changeForm(ModelMap model,
-			@Valid @ModelAttribute("changePassword") ChangePassword changePassword, BindingResult result,
-			@RequestParam("email") String email, @RequestParam("newPassword") String newPassword, @RequestParam("confirmPassword") String confirmPassword) {
+			@Valid @ModelAttribute ChangePassword changePassword, BindingResult result,
+			@RequestParam String email, @RequestParam String newPassword, @RequestParam String confirmPassword) {
 		if (result.hasErrors()) {
 
 			model.addAttribute("newPassword", newPassword);

@@ -20,7 +20,7 @@
       content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, products, farm, grocery, natural, online"
     />
   <title>Thế giới nông sản</title>
-<link rel="icon" href="/images/logo.png" />
+	<link rel="icon" href="/images/logo/logoWeb.png" />
     <link rel="stylesheet" href="fonts/flaticon/flaticon.css" />
     <link rel="stylesheet" href="fonts/icofont/icofont.min.css" />
     <link rel="stylesheet" href="fonts/fontawesome/fontawesome.min.css" />
@@ -37,12 +37,13 @@
         <div class="row justify-content-center">
           <div class="col-12 col-sm-10 col-md-12 col-lg-8 col-xl-8">
             <div class="user-form-logo">
-              <a th:href="@{/}"><img src="images/logo.png" alt="logo" /></a>
+              <a th:href="@{/}"><img src="images/logo/logoWeb.png" alt="logo" /></a>
             </div>
             <div class="user-form-card">
               <div class="user-form-title">
+              <div class="user-form-avatar"><img alt="image-avatar" src="/assets/img/imageAvt.jpg"></div>
                 <h2>Đăng Ký Ngay!</h2>
-                <p>Thiết Lập Một Tài Khoản Mới</p>
+                <p class="mb-5">Thiết Lập Một Tài Khoản Mới</p>
               </div>
               <div class="user-form-group">
 <!--                 <ul class="user-form-social"> -->
@@ -103,6 +104,7 @@
                     <div class="form-check mb-3">
                         <input
                             class="form-check-input"
+                            id="check"
                             type="checkbox"
                             value=""
                             onclick="hidePass()"/>

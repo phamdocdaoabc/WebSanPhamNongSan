@@ -20,7 +20,7 @@
       content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, products, farm, grocery, natural, online"
     />
     <title>Thế giới nông sản</title>
-<link rel="icon" href="/images/logo.png" />
+	<link rel="icon" href="/images/logo/logoWeb.png" />
     <link rel="stylesheet" href="fonts/flaticon/flaticon.css" />
     <link rel="stylesheet" href="fonts/icofont/icofont.min.css" />
     <link rel="stylesheet" href="fonts/fontawesome/fontawesome.min.css" />
@@ -37,10 +37,11 @@
         <div class="row justify-content-center">
           <div class="col-12 col-sm-10 col-md-12 col-lg-8 col-xl-8">
             <div class="user-form-logo">
-              <a th:href="@{/}"><img src="images/logo.png" alt="logo" /></a>
+              <a th:href="@{/}"><img src="images/logo/logoWeb.png" alt="logo"/></a>
             </div>
             <div class="user-form-card">
               <div class="user-form-title">
+              <div class="user-form-avatar"><img alt="image-avatar" src="/assets/img/imageAvt.jpg"></div>
                 <h2>Đăng nhập!</h2>
                 <p>Sử Dụng Thông Tin Đăng Nhập Của Bạn Để Truy Cập</p>
                 <br>
@@ -108,8 +109,7 @@
                   <div class="form-button">
                     <button type="submit">Đăng nhập</button>
                     <p>
-                        Quên Mật Khẩu?
-                        <a th:href="@{/forgotPassword}">Tại đây</a>
+                        <a th:href="@{/forgotPassword}">Quên Mật Khẩu?</a>
                     </p>
                   </div>
                 </form>
@@ -118,7 +118,7 @@
             </div>
             <div class="user-form-remind">
               <p>
-                Không Có Bất Kỳ Tài Khoản?<a th:href="@{/register}">Đăng Ký Tại Đây</a>
+                Bạn chưa có tài khoản?<a th:href="@{/register}">Đăng Ký Ngay</a>
               </p>
             </div>
             <div class="user-form-footer">

@@ -24,7 +24,7 @@ public class ProductDetailController extends CommomController{
 	CommomDataService commomDataService;
 
 	@GetMapping(value = "productDetail")
-	public String productDetail(@RequestParam("id") Long id, Model model, User user) {
+	public String productDetail(@RequestParam Long id, Model model, User user) {
 
 		Product product = productRepository.findById(id).orElse(null);
 		model.addAttribute("product", product);

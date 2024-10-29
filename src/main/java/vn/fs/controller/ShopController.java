@@ -39,8 +39,8 @@ public class ShopController extends CommomController {
 	CommomDataService commomDataService;
 
 	@GetMapping(value = "/products")
-	public String shop(Model model, Pageable pageable, @RequestParam("page") Optional<Integer> page,
-			@RequestParam("size") Optional<Integer> size, User user) {
+	public String shop(Model model, Pageable pageable, @RequestParam Optional<Integer> page,
+			@RequestParam Optional<Integer> size, User user) {
 
 		int currentPage = page.orElse(1);
 		int pageSize = size.orElse(12);
@@ -82,8 +82,8 @@ public class ShopController extends CommomController {
 	
 	// search product
 	@GetMapping(value = "/searchProduct")
-	public String showsearch(Model model, Pageable pageable, @RequestParam("keyword") String keyword,
-			@RequestParam("size") Optional<Integer> size, @RequestParam("page") Optional<Integer> page,
+	public String showsearch(Model model, Pageable pageable, @RequestParam String keyword,
+			@RequestParam Optional<Integer> size, @RequestParam Optional<Integer> page,
 			User user) {
 	
 		int currentPage = page.orElse(1);
@@ -103,7 +103,7 @@ public class ShopController extends CommomController {
 	}
 	
 	// search product
-	public Page<Product> findPaginatSearch(Pageable pageable, @RequestParam("keyword") String keyword) {
+	public Page<Product> findPaginatSearch(Pageable pageable, @RequestParam String keyword) {
 
 		List<Product> productPage = productRepository.searchProduct(keyword);
 
@@ -126,7 +126,7 @@ public class ShopController extends CommomController {
 	
 	// list books by category
 	@GetMapping(value = "/productByCategory")
-	public String listProductbyid(Model model, @RequestParam("id") Long id, User user) {
+	public String listProductbyid(Model model, @RequestParam Long id, User user) {
 		List<Product> products = productRepository.listProductByCategory(id);
 
 		List<Product> listProductNew = new ArrayList<>();

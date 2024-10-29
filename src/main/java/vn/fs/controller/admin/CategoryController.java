@@ -63,7 +63,7 @@ public class CategoryController {
 
 	// add category
 	@PostMapping(value = "/addCategory")
-	public String addCategory(@Validated @ModelAttribute("category") Category category, ModelMap model,
+	public String addCategory(@Validated @ModelAttribute Category category, ModelMap model,
 			BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
@@ -80,7 +80,7 @@ public class CategoryController {
 
 	// get Edit category
 	@GetMapping(value = "/editCategory/{id}")
-	public String editCategory(@PathVariable("id") Long id, ModelMap model) {
+	public String editCategory(@PathVariable Long id, ModelMap model) {
 		Category category = categoryRepository.findById(id).orElse(null);
 
 		model.addAttribute("category", category);
@@ -90,7 +90,7 @@ public class CategoryController {
 
 	// delete category
 	@GetMapping("/delete/{id}")
-	public String delCategory(@PathVariable("id") Long id, Model model) {
+	public String delCategory(@PathVariable Long id, Model model) {
 		categoryRepository.deleteById(id);
 
 		model.addAttribute("message", "Delete successful!");

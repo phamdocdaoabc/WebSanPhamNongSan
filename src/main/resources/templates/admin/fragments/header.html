@@ -10,7 +10,7 @@
 		<!-- Logo Header -->
 		<div class="logo-header" data-background-color="white">
 			<a th:href="@{/admin/home}" class="logo">
-				<img src="/images/logo.png" width=80px alt="navbar brand" class="navbar-brand">
+				<img src="/images/logo/logoWeb.png" style="transform: translateY(-20px);" width=100px alt="navbar brand" class="navbar-brand">
 			</a>
 			<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon">
@@ -27,8 +27,7 @@
 		<!-- End Logo Header -->
 
 		<!-- Navbar Header -->
-		<nav class="navbar navbar-header navbar-expand-lg" style="background-color:#f57439">
-			
+		<nav class="navbar navbar-header navbar-expand-lg" style="background-color: rgb(62, 170, 75)">			
 			<div class="container-fluid">
 				<div class="collapse" id="search-nav">
 					<form class="navbar-left navbar-form nav-search mr-md-3">
@@ -47,14 +46,14 @@
 					<li class="nav-item dropdown hidden-caret">
 						<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 							<div class="avatar-sm">
-								<img src="/assets/img/05.png" alt="..." class="avatar-img rounded-circle">
+								<img src="/images/user_avatar.jpg" alt="..." class="avatar-img rounded-circle">
 							</div>
 						</a>
 						<ul class="dropdown-menu dropdown-user animated fadeIn">
 							<div class="dropdown-user-scroll scrollbar-outer">
 								<li>
 									<div class="user-box">
-										<div class="avatar-lg"><img src="/assets/img/05.png" alt="image profile" class="avatar-img rounded"></div>
+										<div class="avatar-lg"><img src="/images/user_avatar.jpg" alt="image profile" class="avatar-img rounded"></div>
 										<div class="u-text">
 											<h4>Hi : [[${user.name}]]</h4>
 											

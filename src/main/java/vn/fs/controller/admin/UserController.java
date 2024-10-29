@@ -37,7 +37,7 @@ public class UserController{
 	
     @PreAuthorize("hasRole('ROLE_ADMIN')")
 	 @PostMapping(value = "/admin/users/{userId}/lock")
-	    public String lockUser(@PathVariable("userId") Long userId) {
+	    public String lockUser(@PathVariable Long userId) {
 	        User user = userRepository.findById(userId).orElse(null);
 	        if (user != null) {
 	            user.setStatus(false); // Khóa tài khoản
@@ -49,7 +49,7 @@ public class UserController{
     
     	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	    @PostMapping(value = "/admin/users/{userId}/unlock")
-	    public String unlockUser(@PathVariable("userId") Long userId) {
+	    public String unlockUser(@PathVariable Long userId) {
 	        User user = userRepository.findById(userId).orElse(null);
 	        if (user != null) {
 	            user.setStatus(true); // Mở khóa tài khoản

@@ -87,8 +87,8 @@ public class ProductController{
 
 	// add product
 	@PostMapping(value = "/addProduct")
-	public String addProduct(@ModelAttribute("product") Product product, ModelMap model,
-			@RequestParam("file") MultipartFile file, HttpServletRequest httpServletRequest) {
+	public String addProduct(@ModelAttribute Product product, ModelMap model,
+			@RequestParam MultipartFile file, HttpServletRequest httpServletRequest) {
 
 		try {
 
@@ -123,7 +123,7 @@ public class ProductController{
 	
 	// get Edit brand
 	@GetMapping(value = "/editProduct/{id}")
-	public String editCategory(@PathVariable("id") Long id, ModelMap model) {
+	public String editCategory(@PathVariable Long id, ModelMap model) {
 		Product product = productRepository.findById(id).orElse(null);
 		
 		model.addAttribute("product", product);
@@ -132,8 +132,8 @@ public class ProductController{
 	}
 
 	@PostMapping(value = "/updateProduct")
-	public String updateProduct(@ModelAttribute("product") Product product, Model model,
-	        @RequestParam("file") MultipartFile file, HttpServletRequest httpServletRequest) {
+	public String updateProduct(@ModelAttribute Product product, Model model,
+	        @RequestParam MultipartFile file, HttpServletRequest httpServletRequest) {
 
 	    // Kiểm tra nếu có file ảnh được tải lên
 	    if (!file.isEmpty()) {
@@ -166,7 +166,7 @@ public class ProductController{
 	
 	// delete category
 	@GetMapping("/deleteProduct/{id}")
-	public String delProduct(@PathVariable("id") Long id, Model model) {
+	public String delProduct(@PathVariable Long id, Model model) {
 		productRepository.deleteById(id);
 		model.addAttribute("message", "Delete successful!");
 
