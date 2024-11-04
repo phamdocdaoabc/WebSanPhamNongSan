@@ -134,7 +134,7 @@ public class ProductController{
 	@PostMapping(value = "/updateProduct")
 	public String updateProduct(@ModelAttribute Product product, Model model,
 	        @RequestParam MultipartFile file, HttpServletRequest httpServletRequest) {
-
+		
 	    // Kiểm tra nếu có file ảnh được tải lên
 	    if (!file.isEmpty()) {
 	        try {

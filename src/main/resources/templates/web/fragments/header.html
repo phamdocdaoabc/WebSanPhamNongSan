@@ -29,7 +29,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				<div class="header-content" style=" height: 150px">
 					<div class="header-media-group">
 						<button class="header-user">
-							<img src="/images/user_avatar.jpg" alt="user" />
+							<img th:src="@{'/loadImage?imageName=' + ${user.avatar}}" alt="Avatar" class="avatar-img rounded-circle" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;">
 						</button>
 						
 						
@@ -46,7 +46,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				
 					<th:block th:if="${#request.remoteUser}">
 						<a href="/profile" class="header-widget" title="Tên của bạn">
-							<img src="/images/user_avatar.jpg" alt="user" />
+							<img th:src="@{'/loadImage?imageName=' + ${user.avatar}}" alt="Avatar" class="avatar-img rounded-circle" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">
 							<span>Xin Chào!<strong><em>  [[${user.name}]]</em></strong></span>
 						</a>
 					</th:block>

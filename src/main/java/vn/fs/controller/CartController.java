@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -178,7 +177,7 @@ public class CartController extends CommomController {
 		}
 
 		BeanUtils.copyProperties(order, orderFinal);
-		if (StringUtils.equals(checkOut, "paypal")) {
+		if (org.thymeleaf.util.StringUtils.equals(checkOut, "paypal")) {
 
 			String cancelUrl = Utils.getBaseURL(request) + "/" + URL_PAYPAL_CANCEL;
 			String successUrl = Utils.getBaseURL(request) + "/" + URL_PAYPAL_SUCCESS;

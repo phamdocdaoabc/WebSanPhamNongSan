@@ -46,14 +46,16 @@
 					<li class="nav-item dropdown hidden-caret">
 						<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 							<div class="avatar-sm">
-								<img src="/images/user_avatar.jpg" alt="..." class="avatar-img rounded-circle">
+								<!--<img src="/images/user_avatar.jpg" alt="..." class="avatar-img rounded-circle">-->
+								<img th:src="@{'/loadImage?imageName=' + ${user.avatar}}" alt="Avatar" class="avatar-img rounded-circle" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;">
 							</div>
 						</a>
 						<ul class="dropdown-menu dropdown-user animated fadeIn">
 							<div class="dropdown-user-scroll scrollbar-outer">
 								<li>
 									<div class="user-box">
-										<div class="avatar-lg"><img src="/images/user_avatar.jpg" alt="image profile" class="avatar-img rounded"></div>
+										<!--<div class="avatar-lg"><img src="/images/user_avatar.jpg" alt="image profile" class="avatar-img rounded"></div>-->
+										<img th:src="@{'/loadImage?imageName=' + ${user.avatar}}" alt="Avatar" class="avatar-img rounded" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">
 										<div class="u-text">
 											<h4>Hi : [[${user.name}]]</h4>
 											

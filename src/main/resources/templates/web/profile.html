@@ -1,221 +1,250 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
-<meta
-    http-equiv="content-type"
-    content="text/html;charset=utf-8"
-  />
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="author" content="mironcoder" />
-    <meta name="email" content="mironcoder@gmail.com" />
-    <meta name="profile" content="https://themeforest.net/user/mironcoder" />
-    <meta name="template" content="greeny" />
-    <meta name="title" content="greeny - Ecommerce Food Store HTML Template" />
-    <meta
-      name="keywords"
-      content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, products, farm, grocery, natural, online"
-    />
-   <title>Thế giới nông sản</title>
-	<link rel="icon" href="/images/logo/logoWeb.png" />
-    <link rel="stylesheet" href="fonts/flaticon/flaticon.css" />
-    <link rel="stylesheet" href="fonts/icofont/icofont.min.css" />
-    <link rel="stylesheet" href="fonts/fontawesome/fontawesome.min.css" />
-    <link rel="stylesheet" href="vendor/venobox/venobox.min.css" />
-    <link rel="stylesheet" href="vendor/slickslider/slick.min.css" />
-    <link rel="stylesheet" href="vendor/niceselect/nice-select.min.css" />
-    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/profile.css" />
-  </head>
-  <body>
-    
-    <!--************************************
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="author" content="mironcoder" />
+<meta name="email" content="mironcoder@gmail.com" />
+<meta name="profile" content="https://themeforest.net/user/mironcoder" />
+<meta name="template" content="greeny" />
+<meta name="title" content="greeny - Ecommerce Food Store HTML Template" />
+<meta name="keywords"
+	content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, products, farm, grocery, natural, online" />
+<title>Thế giới nông sản</title>
+<link rel="icon" href="/images/logo/logoWeb.png" />
+<link rel="stylesheet" href="fonts/flaticon/flaticon.css" />
+<link rel="stylesheet" href="fonts/icofont/icofont.min.css" />
+<link rel="stylesheet" href="fonts/fontawesome/fontawesome.min.css" />
+<link rel="stylesheet" href="vendor/venobox/venobox.min.css" />
+<link rel="stylesheet" href="vendor/slickslider/slick.min.css" />
+<link rel="stylesheet" href="vendor/niceselect/nice-select.min.css" />
+<link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/profile.css" />
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<body>
+
+	<!--************************************
 				Header Start
 		*************************************-->
-		<header th:replace="~{/web/fragments/header :: header}"></header>
-		<!--************************************
+	<header th:replace="~{/web/fragments/header :: header}"></header>
+	<!--************************************
 				Header End
 		*************************************-->
 
-    <section
-      class="inner-section single-banner"
-      style="background: url(images/single-banner.jpg) no-repeat center">
-      <div class="container">
-        <h2>thông tin tài khoản</h2>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a th:href="@{/}">Trang chủ >></a></li>
-          
-        </ol>
-      </div>
-    </section>
-    <section class="inner-section profile-part">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="account-card">
-              <div class="account-title">
-                <h4>Tài khoản của bạn</h4>
-              </div>
-              <div class="account-content">
-                <div class="row">
-                  <div class="col-lg-2">
-                    <div class="profile-image">
-                      <a href="javascript:void(0);">
-                      	<!--<img th:src="@{'/loadImage?imageName='+${user.avatar}}" alt="user" />-->
-                      	<img src="/avatars/{{user.avatar}}" alt="User Avatar" width="100" height="100"/>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                      <label class="form-label">Họ và tên</label>
-                      <input
-                        class="form-control"
-                        type="text"
-                        th:value="${user.name}"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                      <label class="form-label">Địa chỉ Email</label
-                      ><input
-                        class="form-control"
-                        type="email"
-                        th:value="${user.email}"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        
-          <div class="col-lg-12">
-            <div class="account-card mb-0">
-              <div class="account-title">
-                <h4>Lịch sử đặt hàng</h4>
-              </div>
-              
-              <section class="inner-section checkout-part">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="account-card">
-                        <div class="account-content">
-                          <div class="table-scroll">
-                            <table class="table-list">
-                              <thead>
-                                <tr>
-                                  <th scope="col">Mã Order</th>
-                                  <th scope="col">Ngày đặt</th>
-                                  <th scope="col">Tổng tiền</th>
-                                  <th scope="col">Địa chỉ</th>
-                                  <th scope="col">Số điện thoại</th>
-                                  <th scope="col">Trạng thái</th>
-                                  <th scope="col">Hành động</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr th:each="item : ${orderByUser}">
-                                  <td class="table-serial"><h6>[[${item.orderId}]]</h6></td>
-                                  <td class="table-name"><h6>[[${item.orderDate}]]</h6></td>
-                                  <td class="table-price"><h6>[[${#numbers.formatDecimal(item.amount, 1, 'DEFAULT', 0, 'DEFAULT')}+' đ']]</h6></td>
-                                  <td class="table-address"><h6>[[${item.address}]]</h6></td>
-                                  <td class="table-brand"><h6>[[${item.phone}]]</h6></td>
-                                  <td class="table-status">
-                                  	<div th:if="${item.status==0}">
-										<a style="cursor: pointer; color: #0e76a8;">
-											<i class="fa fa-check-circle"> Chờ xác nhận</i>
+	<section class="inner-section single-banner"
+		style="background: url(images/single-banner.jpg) no-repeat center">
+		<div class="container">
+			<h2>thông tin tài khoản</h2>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/}">Trang chủ >></a></li>
+
+			</ol>
+		</div>
+	</section>
+	<section class="inner-section profile-part">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="account-title">
+						<h4>Tài khoản của bạn</h4>
+					</div>
+					<div class="account-content">
+						<form th:action="@{/saveUser}" method="post"
+							enctype="multipart/form-data" th:object="${user}">
+							<div class="row">
+								<!-- Avatar Section -->
+								<div class="col-lg-2">
+									<div class="profile-image">
+										<label class="form-label">Hình Đại Diện</label> <a
+											href="javascript:void(0);"> <img
+											th:src="@{'/loadImage?imageName=' + ${user.avatar}}"
+											alt="Avatar" class="avatar-img rounded-circle"
+											style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%;"
+											id="avatarImage">
 										</a>
 									</div>
-									
-									<div th:if="${item.status==1}">
-										<a style="cursor: pointer; color: #ffab10;">
-											<i class="fa fa-check-circle"> Đang giao hàng</i>
-										</a>
+									<input type="file" name="image" id="image" class="form-control"
+										accept="image/png, image/jpeg"
+										onchange="updateAvatarPreview(this)">
+								</div>
+								<script>
+									function updateAvatarPreview(input) {
+										const avatarImage = document
+												.getElementById('avatarImage');
+
+										// Kiểm tra xem có file nào đã được chọn không
+										if (input.files && input.files[0]) {
+											const reader = new FileReader();
+											reader.onload = function(e) {
+												avatarImage.src = e.target.result; // Cập nhật src của hình ảnh
+											}
+											reader
+													.readAsDataURL(input.files[0]); // Đọc file dưới dạng Data URL
+										}
+										const output = document.querySelector('.avatar-img');
+								        output.src = URL.createObjectURL(event.target.files[0]);
+								        output.onload = () => URL.revokeObjectURL(output.src); // Giải phóng URL sau khi tải									
+									}
+								</script>
+
+
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label class="form-label">Họ và tên:</label> <input
+											class="form-control" type="text" th:field="*{name}" />
 									</div>
-									
-									<div th:if="${item.status==2}">
-										<a style="cursor: pointer; color: #119744;">
-											<i class="fa fa-check-circle"> Đã thanh toán</i>
-										</a>
+									<div class="form-group">
+										<label class="form-label">Số Điện Thoại:</label> <input
+											class="form-control" type="text" th:field="*{phone}" />
 									</div>
-									
-									<div th:if="${item.status==3}">
-										<a style="cursor: pointer; color: #ff3838;">
-											<i class="fa fa-check-circle"> Đã hủy</i>
-										</a>
+									<div class="form-group">
+										<label class="form-label">Giới Tính:</label>
+										<div class="gender-options">
+											<input type="radio" th:field="*{sex}" value="Nam" /> Nam 
+											<input type="radio" th:field="*{sex}" value="Nữ" /> Nữ
+										</div>
 									</div>
-                                  </td>
-                                  
-                                  <td class="table-action">
-                                    <a
-                                      class="view"
-                                      th:href="@{'/order/detail/'+${item.orderId}}"
-                                      title="Xem chi tiết"
-                                      >
-                                      <i class="fas fa-eye"></i>
-                                      </a>
-                                      
-                                      <th:block th:if="${item.status==0}">
-	                                      <a class="trash" href="javascript:void(0);" title="Hủy đơn hàng"
-		                                      	th:data-id="${item.orderId}"
-												onclick="showConfigCancelModalDialog(this.getAttribute('data-id'))">
-	                                      	<i class="icofont-trash"></i>
-	                                      </a>
-                                      </th:block>
-                                      
-                                      <th:block th:if="${item.status!=0}">
-	                                      <a class="trash" href="javascript:void(0);" title="Không thể huỷ đơn hàng này"
-												style="cursor: not-allowed">
-	                                      	<i class="icofont-trash"></i>
-	                                      </a>
-                                      </th:block>
-                                      
-                                  </td>
-                                </tr>
-                                
-                              </tbody>
-                            </table>
-                            
-                            <!-- pagination  -->
-                            <div class="row">
-				              <div class="col-lg-12">
-				                <div class="bottom-paginate">
-				                  <p class="page-info"></p>
-				                  <ul class="pagination">
-				                    
-				                    <li th:each="pageNumber : ${pageNumbers}" th:if="${orderByUser.totalPages > 0}" class="page-item">
-				                      <a class="page-link"
-				                      		th:href="@{/profile(size=${orderByUser.size}, page=${pageNumber})}"
-				                      		th:class="${pageNumber==orderByUser.number + 1} ? 'page-link active'">
-				                      		[[${pageNumber}]]
-				                      </a>
-				                    </li>
-				                    
-				                  </ul>
-				                </div>
-				              </div>
-				            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            </div>
-          </div>
-          </div>
-        </div>
-    </section>
-    
-    <!-- Huỷ đơn hàng -->
+								</div>
+								<div class="col-md-6 col-lg-4">
+									<div class="form-group">
+										<label class="form-label">Địa Chỉ Email:</label> <input
+											class="form-control" type="email" th:field="*{email}" />
+									</div>
+									<div class="form-group">
+										<label class="form-label">Địa Chỉ Nhà:</label> <input
+											class="form-control" type="text" th:field="*{address}" />
+									</div>
+									<div class="form-group">
+										<label class="form-label">Ngày Sinh:</label> <input
+											class="form-control" type="date" th:field="*{birthdate}" />
+									</div>
+								</div>
+								<!-- Save Button -->
+								<div class="text-center mt-4 mb-3">
+									<button type="submit" class="btn btn-primary">Cập nhật</button>
+								</div>
+								<div th:if="${successMessage}" class="alert alert-success">
+									<span th:text="${successMessage}"></span>
+								</div>
+						</form>
+
+
+						<div class="col-lg-12">
+							<div class="account-card mb-0">
+								<div class="account-title">
+									<h4>Lịch sử đặt hàng</h4>
+								</div>
+
+								<section class="inner-section checkout-part">
+									<div class="container">
+										<div class="row">
+											<div class="col-lg-12">
+												<div class="account-card">
+													<div class="account-content">
+														<div class="table-scroll">
+															<table class="table-list">
+																<thead>
+																	<tr>
+																		<th scope="col">Mã Order</th>
+																		<th scope="col">Ngày đặt</th>
+																		<th scope="col">Tổng tiền</th>
+																		<th scope="col">Địa chỉ</th>
+																		<th scope="col">Số điện thoại</th>
+																		<th scope="col">Trạng thái</th>
+																		<th scope="col">Hành động</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr th:each="item : ${orderByUser}">
+																		<td class="table-serial"><h6>[[${item.orderId}]]</h6></td>
+																		<td class="table-name"><h6>[[${item.orderDate}]]</h6></td>
+																		<td class="table-price"><h6>[[${#numbers.formatDecimal(item.amount,
+																				1, 'DEFAULT', 0, 'DEFAULT')}+' đ']]</h6></td>
+																		<td class="table-address"><h6>[[${item.address}]]</h6></td>
+																		<td class="table-brand"><h6>[[${item.phone}]]</h6></td>
+																		<td class="table-status">
+																			<div th:if="${item.status==0}">
+																				<a style="cursor: pointer; color: #0e76a8;"> <i
+																					class="fa fa-check-circle"> Chờ xác nhận</i>
+																				</a>
+																			</div>
+
+																			<div th:if="${item.status==1}">
+																				<a style="cursor: pointer; color: #ffab10;"> <i
+																					class="fa fa-check-circle"> Đang giao hàng</i>
+																				</a>
+																			</div>
+
+																			<div th:if="${item.status==2}">
+																				<a style="cursor: pointer; color: #119744;"> <i
+																					class="fa fa-check-circle"> Đã thanh toán</i>
+																				</a>
+																			</div>
+
+																			<div th:if="${item.status==3}">
+																				<a style="cursor: pointer; color: #ff3838;"> <i
+																					class="fa fa-check-circle"> Đã hủy</i>
+																				</a>
+																			</div>
+																		</td>
+
+																		<td class="table-action"><a class="view"
+																			th:href="@{'/order/detail/'+${item.orderId}}"
+																			title="Xem chi tiết"> <i class="fas fa-eye"></i>
+																		</a> <th:block th:if="${item.status==0}">
+																				<a class="trash" href="javascript:void(0);"
+																					title="Hủy đơn hàng" th:data-id="${item.orderId}"
+																					onclick="showConfigCancelModalDialog(this.getAttribute('data-id'))">
+																					<i class="icofont-trash"></i>
+																				</a>
+																			</th:block> <th:block th:if="${item.status!=0}">
+																				<a class="trash" href="javascript:void(0);"
+																					title="Không thể huỷ đơn hàng này"
+																					style="cursor: not-allowed"> <i
+																					class="icofont-trash"></i>
+																				</a>
+																			</th:block></td>
+																	</tr>
+
+																</tbody>
+															</table>
+
+															<!-- pagination  -->
+															<div class="row">
+																<div class="col-lg-12">
+																	<div class="bottom-paginate">
+																		<p class="page-info"></p>
+																		<ul class="pagination">
+
+																			<li th:each="pageNumber : ${pageNumbers}"
+																				th:if="${orderByUser.totalPages > 0}"
+																				class="page-item"><a class="page-link"
+																				th:href="@{/profile(size=${orderByUser.size}, page=${pageNumber})}"
+																				th:class="${pageNumber==orderByUser.number + 1} ? 'page-link active'">
+																					[[${pageNumber}]] </a></li>
+
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+	</section>
+
+	<!-- Huỷ đơn hàng -->
 	<script>
 		function showConfigCancelModalDialog(id) {
 			$('#idCancel').text(id);
@@ -223,31 +252,32 @@
 			$('#configmationCancelId').modal('show');
 		}
 	</script>
-	
+
 	<!-- Modal -->
-		<div class="modal" id="configmationCancelId">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<button class="modal-close" data-bs-dismiss="modal">
-		            	<i class="icofont-close"></i>
-		          	</button>
-					<div class="modal-form">
-						<h5 class="modal-title">Xác nhận</h5>
-						<div class="modal-body">
+	<div class="modal" id="configmationCancelId">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<button class="modal-close" data-bs-dismiss="modal">
+					<i class="icofont-close"></i>
+				</button>
+				<div class="modal-form">
+					<h5 class="modal-title">Xác nhận</h5>
+					<div class="modal-body">
 						<p>
-							Bạn có muốn huỷ đơn hàng có mã " <span style="color: #119744" id="idCancel"></span> " không ?
+							Bạn có muốn huỷ đơn hàng có mã " <span style="color: #119744"
+								id="idCancel"></span> " không ?
 						</p>
 					</div>
 					<div class="modal-footer">
 						<a id="yesOptionCanCel" type="button" class="btn btn-success">Có</a>
 					</div>
-					</div>
-					
 				</div>
+
 			</div>
 		</div>
-    
-    <section class="news-part"
+	</div>
+
+	<section class="news-part"
 		style="background: url(images/newsletter.jpg) no-repeat center">
 		<div class="container">
 			<div class="row align-items-center">
@@ -318,29 +348,29 @@
 			</div>
 		</div>
 	</section>
-    
-    
-    <!--************************************
+
+
+	<!--************************************
 				Footer Start
 		*************************************-->
-		<footer th:replace="~{/web/fragments/footer :: footer}"></footer>
-				
-		<!--************************************
+	<footer th:replace="~{/web/fragments/footer :: footer}"></footer>
+
+	<!--************************************
 				Footer End
 		*************************************-->
-		
-    <script src="vendor/bootstrap/jquery-1.12.4.min.js"></script>
-    <script src="vendor/bootstrap/popper.min.js"></script>
-    <script src="vendor/bootstrap/bootstrap.min.js"></script>
-    <script src="vendor/countdown/countdown.min.js"></script>
-    <script src="vendor/niceselect/nice-select.min.js"></script>
-    <script src="vendor/slickslider/slick.min.js"></script>
-    <script src="vendor/venobox/venobox.min.js"></script>
-    <script src="js/nice-select.js"></script>
-    <script src="js/countdown.js"></script>
-    <script src="js/accordion.js"></script>
-    <script src="js/venobox.js"></script>
-    <script src="js/slick.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+
+	<script src="vendor/bootstrap/jquery-1.12.4.min.js"></script>
+	<script src="vendor/bootstrap/popper.min.js"></script>
+	<script src="vendor/bootstrap/bootstrap.min.js"></script>
+	<script src="vendor/countdown/countdown.min.js"></script>
+	<script src="vendor/niceselect/nice-select.min.js"></script>
+	<script src="vendor/slickslider/slick.min.js"></script>
+	<script src="vendor/venobox/venobox.min.js"></script>
+	<script src="js/nice-select.js"></script>
+	<script src="js/countdown.js"></script>
+	<script src="js/accordion.js"></script>
+	<script src="js/venobox.js"></script>
+	<script src="js/slick.js"></script>
+	<script src="js/main.js"></script>
+</body>
 </html>
