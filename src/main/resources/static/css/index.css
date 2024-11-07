@@ -223,18 +223,21 @@
 
 
 df-messenger {
-  --df-messenger-bot-message: #3bd645; /* Màu nền bong bóng cho tin nhắn của đại lý */
+  --df-messenger-bot-message: var(--secondary); /* Màu nền bong bóng cho tin nhắn của đại lý */
   --df-messenger-chips-color: #fff;
   --df-messenger-chips-border-color: #e0e0e0;
   
-  --df-messenger-button-titlebar-color: #0084ff; /* Màu sắc cho nút nổi và thanh tiêu đề của hộp thoại trò chuyện */
+  --df-messenger-button-titlebar-color: var(--primary); /* Màu sắc cho nút nổi và thanh tiêu đề của hộp thoại trò chuyện */
   --df-messenger-chat-background-color: #ffffff; /* Màu nền cho hộp thoại trò chuyện */
   --df-messenger-font-color: #050505; /* Màu chữ cho tin nhắn */
   --df-messenger-input-box-color: #F0F0F0; /* Màu nền cho ô nhập văn bản */
   --df-messenger-input-font-color: #050505; /* Màu chữ cho hộp nhập văn bản */
   --df-messenger-input-placeholder-font-color: #050505; /* Màu chữ cho văn bản giữ chỗ trong hộp nhập văn bản */
   --df-messenger-send-icon: #0084ff; /* Màu của biểu tượng gửi trong hộp nhập văn bản */
-  --df-messenger-user-message: #00a1e6; /* Màu nền bong bóng cho tin nhắn của người dùng */
+  --df-messenger-user-message: var(--primary); /* Màu nền bong bóng cho tin nhắn của người dùng */
+}
+.cs2 {
+	fill: #63dc87;
 }
 .section-heading {
 	    padding-top: 30px;

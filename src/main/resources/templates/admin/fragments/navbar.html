@@ -3,11 +3,17 @@
 <head>
 <meta charset="UTF-8">
 	<title>Greenty - Trang quản trị</title>
+	<style>
+		.sidebar .sidebar-wrapper a.sidebar-client {
+		
+		}
+	</style>
 </head>
 <body>
 	<div class="sidebar sidebar-style-2" th:fragment="navbar">			
 		<div class="sidebar-wrapper scrollbar scrollbar-inner">
-			<div class="sidebar-content">
+		
+			<div class="sidebar-content" style="position: relative">
 				<div class="user">
 					<div class="avatar-sm float-left mr-2">
 						 <img th:src="@{'/loadImage?imageName=' + ${user.avatar}}" alt="Avatar" class="avatar-img rounded-circle" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;">
@@ -22,7 +28,7 @@
 						<div class="clearfix"></div>
 					</div>
 				</div>
-				<ul class="nav nav-primary">
+				<ul class="nav nav-primary" style="margin-bottom: 20px;">
 					<li class="nav-section">
 						<span class="sidebar-mini-icon">
 							<i class="fa fa-ellipsis-h"></i>
@@ -70,7 +76,7 @@
 							<ul class="nav nav-collapse">
 								<li>
 									<a th:href="@{/admin/reports}">
-										<span class="sub-item">Thống Kê sản Phẩm</span>
+										<span class="sub-item">Thống kê sản phẩm</span>
 									</a>
 								</li>
 								<li>
@@ -102,6 +108,21 @@
 						</div>
 					</li>
 				</ul>
+				
+				<a href="/" class="sidebar-client" style="
+					background: #28a745; 
+					text-align: center;
+					width: 87%;
+					padding: 8px 15px; 
+					border-radius: 6px; 
+					color: white;
+					text-decoration: none;
+					font-weight: 700;
+					position: absolute;
+					bottom: 20px;
+					left: 50%;
+					transform: translateX(-50%);
+				">Tới Trang Client >></a>
 			</div>
 		</div>
 	</div>

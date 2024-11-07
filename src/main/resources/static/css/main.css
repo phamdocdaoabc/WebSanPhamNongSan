@@ -154,6 +154,7 @@ input,
 button {
   border: none;
   outline: none;
+  padding: 0px;
   background: none;
 }
 button:focus {
@@ -1584,7 +1585,7 @@ tbody tr td:last-child {
 	border: 2px;
 	background: var(--white);
 }
-.suggest-card h5:hover::after {
+.suggest-card:hover h5::after {
 	transform: translateX(-50%) scaleX(1);
 	transition: 0.3s ease-out;
 }
@@ -3768,6 +3769,11 @@ tbody tr td:last-child {
   font-size: 15px;
   padding-left: 15px;
 }
+.header-form button {
+	background: var(--primary);
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
 .header-form button i {
   width: 45px;
   height: 45px;
@@ -3784,7 +3790,7 @@ tbody tr td:last-child {
   -o-transition: all linear 0.3s;
 }
 .header-form button i:hover {
-  color: var(--primary);
+  color: white;
 }
 .header-media-group {
   display: none;
