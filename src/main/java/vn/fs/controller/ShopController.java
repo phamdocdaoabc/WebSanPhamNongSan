@@ -128,7 +128,6 @@ public class ShopController extends CommomController {
 	@GetMapping(value = "/productByCategory")
 	public String listProductbyid(Model model, @RequestParam Long id, User user) {
 		List<Product> products = productRepository.listProductByCategory(id);
-
 		List<Product> listProductNew = new ArrayList<>();
 
 		for (Product product : products) {
